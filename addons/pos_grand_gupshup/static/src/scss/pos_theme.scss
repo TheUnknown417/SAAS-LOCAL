@@ -1,0 +1,196 @@
+/* Grand Gup Shup POS Custom Theme */
+
+.pos {
+    /* Define primary brand colors based on logo */
+    --primary-black: #111111;
+    --secondary-black: #222222;
+    --primary-orange: #FF6B00; /* From the menu headings */
+    --background-light: #F5F5F5;
+    --text-light: #FFFFFF;
+    --text-dark: #333333;
+
+    /* Override standard POS background */
+    background-color: var(--background-light) !important;
+}
+
+/* Header styling */
+.pos .pos-topheader {
+    background-color: var(--primary-black) !important;
+    border-bottom: 3px solid var(--primary-orange);
+}
+
+.pos .pos-topheader .oe_status {
+    color: var(--text-light) !important;
+}
+
+/* Category styling */
+.pos .category-button {
+    background-color: var(--text-light) !important;
+    border: 1px solid #ddd !important;
+    border-radius: 8px !important;
+    color: var(--text-dark) !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.pos .category-button:hover, .pos .category-button.selected {
+    background-color: var(--primary-orange) !important;
+    color: var(--text-light) !important;
+    border-color: var(--primary-orange) !important;
+}
+
+/* Product button styling */
+.pos .product {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05) !important;
+    border: 1px solid #eee !important;
+    overflow: hidden !important;
+    
+    /* Kill Odoo's native transition-base to completely stop GPU scroll jitter */
+    transition: none !important;
+    transform: translateZ(0) !important;
+    backface-visibility: hidden !important;
+}
+
+.pos .product:active {
+    border-color: var(--primary-orange) !important;
+    background-color: #f9f9f9 !important;
+}
+
+.pos .product .product-img {
+    background-color: #fff !important;
+}
+
+.pos .product .product-name {
+    font-weight: 600 !important;
+    color: var(--text-dark) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+}
+
+.pos .product .price-tag {
+    background-color: var(--primary-black) !important;
+    color: var(--text-light) !important;
+    border-radius: 20px !important;
+    padding: 4px 10px !important;
+    font-weight: bold !important;
+    border: 2px solid var(--primary-orange);
+    
+    /* Lock it into the card structure instead of floating over it */
+    position: static !important;
+    display: inline-block !important;
+    margin: 5px !important;
+    align-self: flex-start !important; /* Keep it aligned to the left */
+}
+
+/* Numpad container stretching */
+.pos .numpad {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    grid-auto-rows: 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: 100% !important;
+    flex-grow: 1 !important;
+}
+
+/* Numpad buttons */
+.pos .numpad button {
+    margin: 0 !important; /* We use grid gap instead of margin now */
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 8px !important;
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    color: var(--primary-black) !important;
+    font-weight: bold !important;
+}
+
+.pos .numpad button:active {
+    background: var(--primary-orange) !important;
+    color: white !important;
+}
+
+/* --- REARRANGE NUMPAD BUTTONS USING EXACT POSITIONS --- */
+/* By default, put everything at the end */
+.pos .numpad button {
+    order: 20 !important;
+}
+
+/* Row 1: 1, 2, 3 */
+.pos .numpad button:nth-child(1) { order: 1 !important; }
+.pos .numpad button:nth-child(2) { order: 2 !important; }
+.pos .numpad button:nth-child(3) { order: 3 !important; }
+
+/* Row 2: 4, 5, 6 */
+.pos .numpad button:nth-child(5) { order: 4 !important; }
+.pos .numpad button:nth-child(6) { order: 5 !important; }
+.pos .numpad button:nth-child(7) { order: 6 !important; }
+
+/* Row 3: 7, 8, 9 */
+.pos .numpad button:nth-child(9) { order: 7 !important; }
+.pos .numpad button:nth-child(10) { order: 8 !important; }
+.pos .numpad button:nth-child(11) { order: 9 !important; }
+
+/* Row 4: +/-, 0, . */
+.pos .numpad button:nth-child(13) { order: 10 !important; }
+.pos .numpad button:nth-child(14) { order: 11 !important; }
+.pos .numpad button:nth-child(15) { order: 12 !important; }
+
+/* Row 5: Backspace, Qty, Disc */
+.pos .numpad button:nth-child(16) { order: 13 !important; }
+.pos .numpad button:nth-child(4) { order: 14 !important; background-color: #f0f0f0 !important; }
+.pos .numpad button:nth-child(8) { order: 15 !important; background-color: #f0f0f0 !important; }
+
+/* Row 6: Price */
+.pos .numpad button:nth-child(12) { order: 16 !important; background-color: #f0f0f0 !important; }
+
+.pos .pay-circle {
+    background-color: var(--primary-orange) !important;
+    color: white !important;
+}
+
+.pos .actionpad button {
+    border-radius: 8px !important;
+}
+
+.pos .actionpad .pay {
+    background-color: var(--primary-black) !important;
+    color: white !important;
+    border: 2px solid var(--primary-orange) !important;
+}
+
+/* Force exactly 6 products per row using CSS Grid */
+.pos .product-list {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 12px !important;
+    justify-content: center !important;
+}
+
+/* Ensure all product cards fill the grid column and have plenty of vertical space */
+.pos .product {
+    width: 100% !important;       
+    height: 200px !important;      
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    margin: 0 !important; /* Let the grid gap handle spacing */
+}
+
+/* Ensure the image area is larger */
+.pos .product .product-img {
+    height: 115px !important;
+    width: 100% !important;
+    object-fit: cover !important;  
+}
+
+/* Ensure long text doesn't break the uniform size */
+.pos .product .product-name {
+    font-size: 14px !important;
+    padding: 6px !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important; 
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;   
+    -webkit-box-orient: vertical !important;
+}

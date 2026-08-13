@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- POS Categories -->
+        <record id="pos_category_karahi" model="pos.category">
+            <field name="name">Karahi Point</field>
+        </record>
+        <record id="pos_category_handi" model="pos.category">
+            <field name="name">Handi Point</field>
+        </record>
+        <record id="pos_category_biryani" model="pos.category">
+            <field name="name">Biryani Point</field>
+        </record>
+        <record id="pos_category_naan" model="pos.category">
+            <field name="name">Special Naan</field>
+        </record>
+        <record id="pos_category_nashta" model="pos.category">
+            <field name="name">Nashta Point</field>
+        </record>
+        <record id="pos_category_lunch" model="pos.category">
+            <field name="name">Lunch Point</field>
+        </record>
+        <record id="pos_category_beef" model="pos.category">
+            <field name="name">Beef Main Course</field>
+        </record>
+    </data>
+</odoo>
